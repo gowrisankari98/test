@@ -58,7 +58,7 @@ contract Token is Bank{
   }
 
 
-  function approve(address _spender, uint256 _value) public returns (bool) {
+  function approve(address _spender, uint256 _value) public  check(_value) returns (bool) {
     allowed[msg.sender][_spender] = _value;
     Approval(msg.sender, _spender, _value);
     return true;
