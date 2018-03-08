@@ -45,7 +45,7 @@ contract Token is Bank{
         balances[owner]=balances[owner]+amount;
         require( balances[owner]<=totalsupply);
         }
-         function transferFrom(address _from, address _to, uint256 _value) public check(_value) returns (bool success) {
+         function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
     require(_to != address(0));
     require(_value <= balances[_from]);
     require(_value <= allowed[_from][_to]);
@@ -58,7 +58,7 @@ contract Token is Bank{
   }
 
 
-  function approve(address _spender, uint256 _value) public  check(_value) returns (bool) {
+  function approve(address _spender, uint256 _value) public   returns (bool) {
     allowed[msg.sender][_spender] = _value;
     Approval(msg.sender, _spender, _value);
     return true;
